@@ -1,0 +1,41 @@
+/* App.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Styles for ItemDetail page */
+  .item-detail {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item-detail h2 {
+    margin-top: 0;
+  }
+  
+  .item-detail p {
+    margin: 10px 0;
+  }
+  
+  .item-detail a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .item-detail a:hover {
+    text-decoration: underline;
+  }
+  

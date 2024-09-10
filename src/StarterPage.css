@@ -1,0 +1,48 @@
+/* StarterPage.css */
+.starter-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #973131, #E0A75E);
+    color: #F5E7B2;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .starter-page h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .society-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .society-links a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #973131;
+    background-color: #F9D689;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .society-links a:hover {
+    background-color: #E0A75E;
+    transform: scale(1.05);
+  }
+  
+
+
+
+
+
+
+
