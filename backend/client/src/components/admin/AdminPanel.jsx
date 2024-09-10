@@ -21,7 +21,7 @@ const AdminPanel = () => {
   useEffect(()=>{
     const fetchPosts = async (req, res, next) => {
       try {
-        const response = await axios.get('http://localhost:5000/api/society/posts',{
+        const response = await axios.get('/api/society/posts',{
           params: {society}
         })
         // console.log(response.data.data);
@@ -42,7 +42,7 @@ const AdminPanel = () => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       try {
         const response = await axios.delete(
-          `http://localhost:5000/api/society/post/item/${postId}/${itemId}`,
+          `/api/society/post/item/${postId}/${itemId}`,
           {
             params: { society },  
           }
@@ -122,7 +122,7 @@ const AdminPanel = () => {
       console.log(updatedData);
       
       try {
-        const response = await axios.put(`http://localhost:5000/api/society/${existingPost._id}`,
+        const response = await axios.put(`/api/society/${existingPost._id}`,
           { data: updatedData },  
           {
             params: { society }, 
@@ -160,7 +160,7 @@ const AdminPanel = () => {
       try {
         console.log(newPost);
       
-        const response = await axios.post('http://localhost:5000/api/society/create/post', newPost, {
+        const response = await axios.post('/api/society/create/post', newPost, {
           params: { society },
           headers: {
             'Content-Type': 'application/json',
@@ -210,7 +210,7 @@ const AdminPanel = () => {
     console.log(currentPost._id);
     
     try {
-      const response = await axios.put(`http://localhost:5000/api/society/${currentPost._id}`,
+      const response = await axios.put(`/api/society/${currentPost._id}`,
         {data: updatedData},
         {
         params: {society},

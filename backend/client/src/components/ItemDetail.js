@@ -17,7 +17,7 @@ const ItemDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/society/post/search/${itemName}`,{
+        const response = await axios.get(`/api/society/post/search/${itemName}`,{
           params: { society }
         });
         

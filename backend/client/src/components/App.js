@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllSocieties = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/society');
+        const response = await axios.get('/api/society');
         setAllSocieties(response.data);
       } catch (error) {
         console.error('Error fetching societies:', error);
@@ -39,12 +39,12 @@ const App = () => {
   useEffect(() => {
     const fetchAdminSocieties = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/society/check-admin', {
+        const response = await axios.get('/api/society/check-admin', {
           params: { email: currentUser.email }
         });
         
         if (response.data.isAdmin) {
-          const societyResponse = await axios.get('http://localhost:5000/api/society');
+          const societyResponse = await axios.get('/api/society');
           const adminSocieties = societyResponse.data.filter(society => 
             society.admin.includes(currentUser.email)
           );
@@ -68,7 +68,7 @@ const App = () => {
 
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/society/posts',{
+        const response = await axios.get('/api/society/posts',{
           params: {society}
         });
         
@@ -100,7 +100,7 @@ const App = () => {
     const cat_id = selectedCategory;
     
     try {
-      const response = await axios.get(`http://localhost:5000/api/society/post/${cat_id}`,{
+      const response = await axios.get(`/api/society/post/${cat_id}`,{
         params: {society}
       });
       if (response.data.statusCode === 200) {
@@ -131,7 +131,7 @@ const App = () => {
       try {
 
         const userEmail = currentUser.email;
-        const response = await axios.post('http://localhost:5000/api/ratings', {
+        const response = await axios.post('/api/ratings', {
           itemId,
           rating,
           userEmail
