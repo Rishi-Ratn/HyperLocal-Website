@@ -4,11 +4,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const {fileURLToPath} = require("url");
-
-//Resolving dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -36,12 +31,12 @@ app.use('/api/society', societyRouter);
 
 
 // Serve static files from the react frontend build
-app.use(express.static(path.join(__dirname, "/client/build")));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 
 // Render client
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
 
