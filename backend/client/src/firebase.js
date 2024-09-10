@@ -50,7 +50,7 @@ onAuthStateChanged(auth, async (user) => {
     }));
     
     try {
-      const response = await axios.get('http://localhost:5000/api/society/check-admin', {
+      const response = await axios.get('/api/society/check-admin', {
         params: { email: user.email }
       });
       const { isAdmin } = response.data;
