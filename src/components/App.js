@@ -81,7 +81,6 @@ const App = () => {
           }
         } else {    
           setIsError(response.data.message);
-          console.log(error);
         }
 
         setIsLoading(false);
