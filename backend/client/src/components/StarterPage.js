@@ -9,7 +9,7 @@ const StarterPage = () => {
   useEffect(() => {
     const fetchSocieties = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/society');
+        const response = await axios.get('/api/society');
         setSocieties(response.data);
         
       } catch (error) {
