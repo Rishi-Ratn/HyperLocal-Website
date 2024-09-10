@@ -335,7 +335,6 @@ const AdminPanel = () => {
             value={isAddingNewCategory ? "" : newPost.cat}
             onChange={(e) => {
               const value = e.target.value;
-              {console.log(value)}
               if (value === "new") {
                 setIsAddingNewCategory(true);
                 setNewPost({ ...newPost, cat: "" });

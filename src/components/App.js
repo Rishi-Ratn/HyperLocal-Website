@@ -77,7 +77,7 @@ const App = () => {
           if (response.data.data.length > 0) {
             const initialCategory = response.data.data[0].cat_id.toString();   
             setSelectedCategory(initialCategory);
-            handleSelectData(initialCategory);
+            // handleSelectData(initialCategory);
           }
         } else {    
           setIsError(response.data.message);
