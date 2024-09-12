@@ -116,26 +116,6 @@ const App = () => {
   }, [society, handleSelectData]);
 
 
-  
-  // const handleSelectData = async (selectedCategory) => {
-  //   const cat_id = selectedCategory;
-    
-  //   try {
-  //     const response = await axios.get(`/api/society/post/${cat_id}`,{
-  //       params: {society}
-  //     });
-  //     if (response.data.statusCode === 200) {
-  //       const category = response.data.data[0];
-  //       setSelectedData(category); 
-  //     } else {
-  //       setIsError(response.data.message);
-  //     }
-  //   } catch (error) {
-  //     setIsError(error.message);
-  //   }
-  // };
-  
-
 
   const handleCategoryChange = (event) => {
     const newcategory = event.target.value;

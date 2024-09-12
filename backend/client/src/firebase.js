@@ -5,12 +5,12 @@ import { loginSuccess, logout, setRole } from './redux/slices/authSlice';
 import axios from 'axios';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDK2m7dpAILoS9EgUXqelaARiLmtYeswdk",
-  authDomain: "hyper-local-f7d10.firebaseapp.com",
-  projectId: "hyper-local-f7d10",
-  storageBucket: "hyper-local-f7d10.appspot.com",
-  messagingSenderId: "1013935915906",
-  appId: "1:1013935915906:web:af8d6397a796328a3a459b"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
