@@ -17,6 +17,7 @@ const AdminPanel = () => {
   const [isAddingNewCategory, setIsAddingNewCategory] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { society } = useParams();
+  const [lastCatId, setLastCatId] = useState(null);
 
   useEffect(()=>{
     const fetchPosts = async (req, res, next) => {
@@ -25,10 +26,14 @@ const AdminPanel = () => {
           params: {society}
         })
         // console.log(response.data.data);
-        setPosts(response.data.data);
+        const postsArray = response.data.data;
+        setPosts(postsArray);
         setCategories([...new Set(response.data.data.map(post => post.cat))]);
-        // console.log(posts);
-        // console.log(categories);
+        if (postsArray.length > 0) {
+          const lastPost = postsArray[postsArray.length - 1];
+          setLastCatId(lastPost.cat_id);
+          console.log(lastPost.cat_id);
+        }
       } catch (error) {
         console.log('Error fetching posts:', error);
       }
@@ -85,7 +90,7 @@ const AdminPanel = () => {
         ...prevState,
         [name]: value
       }));
-      newPost.cat_id = 2;
+      newPost.cat_id = lastCatId+1;
       console.log(newPost);
       
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import '../App.css';
 import axios from 'axios';
 import { useNavigate, Link, useParams } from 'react-router-dom';
@@ -61,6 +61,27 @@ const App = () => {
       fetchAdminSocieties();
     }
   }, [currentUser, role]);
+
+
+
+  const handleSelectData = useCallback(async (selectedCategory) => {
+    const cat_id = selectedCategory;
+  
+    try {
+      const response = await axios.get(`/api/society/post/${cat_id}`, {
+        params: { society },
+      });
+      
+      if (response.data.statusCode === 200) {
+        const category = response.data.data[0];
+        setSelectedData(category);
+      } else {
+        setIsError(response.data.message);
+      }
+    } catch (error) {
+      setIsError(error.message);
+    }
+  }, [society]);
   
   
 
@@ -77,12 +98,11 @@ const App = () => {
           if (response.data.data.length > 0) {
             const initialCategory = response.data.data[0].cat_id.toString();   
             setSelectedCategory(initialCategory);
-            // handleSelectData(initialCategory);
+            handleSelectData(initialCategory);
           }
         } else {    
           setIsError(response.data.message);
         }
-
         setIsLoading(false);
         const storedRatings = JSON.parse(localStorage.getItem('ratings')) || {};
         setRatings(storedRatings);
@@ -93,27 +113,29 @@ const App = () => {
     };
 
     fetchPosts();
-  }, [society]);
+  }, [society, handleSelectData]);
+
 
   
-  const handleSelectData = async (selectedCategory) => {
-    const cat_id = selectedCategory;
+  // const handleSelectData = async (selectedCategory) => {
+  //   const cat_id = selectedCategory;
     
-    try {
-      const response = await axios.get(`/api/society/post/${cat_id}`,{
-        params: {society}
-      });
-      if (response.data.statusCode === 200) {
-        const category = response.data.data[0];
-        setSelectedData(category); 
-      } else {
-        setIsError(response.data.message);
-      }
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
+  //   try {
+  //     const response = await axios.get(`/api/society/post/${cat_id}`,{
+  //       params: {society}
+  //     });
+  //     if (response.data.statusCode === 200) {
+  //       const category = response.data.data[0];
+  //       setSelectedData(category); 
+  //     } else {
+  //       setIsError(response.data.message);
+  //     }
+  //   } catch (error) {
+  //     setIsError(error.message);
+  //   }
+  // };
   
+
 
   const handleCategoryChange = (event) => {
     const newcategory = event.target.value;
